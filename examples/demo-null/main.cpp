@@ -108,7 +108,7 @@ int main(int argc, char ** argv) {
         }
         state.update();
 
-        io.DisplaySize = ImVec2(1200, 800);
+        io.DisplaySize = ImVec2(1920, 1080);
         io.DeltaTime = vsync.delta_s();
 
         ImGui::NewFrame();
