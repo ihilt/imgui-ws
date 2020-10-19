@@ -64,7 +64,10 @@ var imgui_ws = {
         this.canvas.addEventListener('touchend', ontouch);
         this.canvas.addEventListener('touchcancel', ontouch);
 
-        this.gl = this.canvas.getContext('webgl');
+        this.gl = this.canvas.getContext('webgl2', {
+            desynchronized: true,
+            preserveDrawingBuffer: true
+        });
 
         this.vertex_buffer = this.gl.createBuffer();
         this.index_buffer = this.gl.createBuffer();
