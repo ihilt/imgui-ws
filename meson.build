@@ -36,18 +36,22 @@ cm_uWS = shared_library(
   'cm_uWS',
   [cm_uWS_src],
   build_by_default : false,
-  link_args : ['/usr/lib/x86_64-linux-gnu/libssl.so', '/usr/lib/x86_64-linux-gnu/libcrypto.so', '/usr/lib/x86_64-linux-gnu/libz.so', '-lpthread'],
+  link_args : [
+      '-lpthread'
+  ],
   link_with : [],
   include_directories : cm_uWS_inc,
   install : false,
   override_options : [],
   objects : [],
-  c_args : ['-O3', '-DNDEBUG', '-DuWS_EXPORTS']
+  c_args : ['-O3', '-DNDEBUG', '-DuWS_EXPORTS', '-DLIBUS_NO_SSL=1', '-DUWS_NO_ZLIB']
 )
 cm_uWS_dep = declare_dependency(
-  link_args : ['/usr/lib/x86_64-linux-gnu/libssl.so', '/usr/lib/x86_64-linux-gnu/libcrypto.so', '/usr/lib/x86_64-linux-gnu/libz.so', '-lpthread'],
+  link_args : [
+      '-lpthread'
+  ],
   link_with : cm_uWS,
-  compile_args : [],
+  compile_args : ['-DUWS_NO_ZLIB'],
   include_directories : cm_uWS_inc
 )
 cm_incppect_dir = include_directories(
@@ -64,16 +68,20 @@ cm_incppect = shared_library(
   'cm_incppect',
   [cm_incppect_src],
   build_by_default : false,
-  link_args : ['/usr/lib/x86_64-linux-gnu/libssl.so', '/usr/lib/x86_64-linux-gnu/libcrypto.so', '/usr/lib/x86_64-linux-gnu/libz.so', '-lpthread'],
+  link_args : [
+      '-lpthread'
+  ],
   link_with : [cm_uWS],
   include_directories : cm_incppect_inc,
   install : false,
   override_options : ['cpp_std=gnu++17'],
   objects : [],
-  cpp_args : ['-O3', '-DNDEBUG', '-DINCPPECT_DEBUG=1', '-Dincppect_EXPORTS']
+  cpp_args : ['-O3', '-DNDEBUG', '-DINCPPECT_DEBUG=1', '-Dincppect_EXPORTS', '-DINCPPECT_NO_SSL=1', '-DUWS_NO_ZLIB']
 )
 cm_incppect_dep = declare_dependency(
-  link_args : ['/usr/lib/x86_64-linux-gnu/libssl.so', '/usr/lib/x86_64-linux-gnu/libcrypto.so', '/usr/lib/x86_64-linux-gnu/libz.so', '-lpthread'],
+  link_args : [
+      '-lpthread'
+  ],
   link_with : cm_incppect,
   compile_args : [],
   include_directories : cm_incppect_inc
@@ -89,11 +97,6 @@ cm_imgui_ws = shared_library(
   link_args : [
     '-ldl',
     '-lpthread',
-    '-lpthread',
-    #'-Wl,-rpath-link,/home/ian/code/pntos/build/subprojects/imgui-ws/__CMake_build/third-party/incppect/third_party',
-    '/usr/lib/x86_64-linux-gnu/libssl.so',
-    '/usr/lib/x86_64-linux-gnu/libcrypto.so',
-    '/usr/lib/x86_64-linux-gnu/libz.so'
   ],
   link_with : [cm_imgui, cm_incppect],
   include_directories : cm_imgui_ws_inc,
@@ -106,11 +109,6 @@ cm_imgui_ws_dep = declare_dependency(
   link_args : [
     '-ldl',
     '-lpthread',
-    '-lpthread',
-    #'-Wl,-rpath-link,/home/ian/code/pntos/build/subprojects/imgui-ws/__CMake_build/third-party/incppect/third_party',
-    '/usr/lib/x86_64-linux-gnu/libssl.so',
-    '/usr/lib/x86_64-linux-gnu/libcrypto.so',
-    '/usr/lib/x86_64-linux-gnu/libz.so'
   ],
   link_with : cm_imgui_ws,
   compile_args : [],
