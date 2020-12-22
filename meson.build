@@ -76,7 +76,7 @@ cm_incppect = shared_library(
   install : false,
   override_options : ['cpp_std=gnu++17'],
   objects : [],
-  cpp_args : ['-O3', '-DNDEBUG', '-DINCPPECT_DEBUG=1', '-Dincppect_EXPORTS', '-DINCPPECT_NO_SSL=1', '-DUWS_NO_ZLIB']
+  cpp_args : ['-O3', '-DNDEBUG', '-Dincppect_EXPORTS', '-DINCPPECT_NO_SSL=1', '-DUWS_NO_ZLIB']
 )
 cm_incppect_dep = declare_dependency(
   link_args : [
