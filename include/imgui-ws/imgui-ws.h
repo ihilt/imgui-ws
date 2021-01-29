@@ -70,6 +70,7 @@ class ImGuiWS {
         bool setTexture(TextureId textureId, int32_t width, int32_t height, const char * data);
         bool setDrawData(const struct ImDrawData * drawData);
         bool addVar(const TPath & path, TGetter && getter);
+	void stop();
 
         int32_t nConnected() const;
 

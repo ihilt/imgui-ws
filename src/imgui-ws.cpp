@@ -69,6 +69,10 @@ ImGuiWS::~ImGuiWS() {
     }
 }
 
+void ImGuiWS::stop() {
+    m_impl->incpp.stop();
+}
+
 bool ImGuiWS::addVar(const TPath & path, TGetter && getter) {
     return m_impl->incpp.var(path, std::move(getter));
 }
