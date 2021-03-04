@@ -2,7 +2,7 @@ project('imgui-ws', 'cpp', 'c')
 cm_imgui_dir = include_directories('third-party/imgui/imgui', '.')
 cm_imgui_sys = include_directories(is_system : true)
 cm_imgui_inc = [cm_imgui_dir, cm_imgui_sys]
-cm_imgui_src = files('third-party/imgui/imgui/imgui.cpp', 'third-party/imgui/imgui/imgui_draw.cpp', 'third-party/imgui/imgui/imgui_demo.cpp', 'third-party/imgui/imgui/imgui_widgets.cpp')
+cm_imgui_src = files('third-party/imgui/imgui/imgui.cpp', 'third-party/imgui/imgui/imgui_draw.cpp', 'third-party/imgui/imgui/imgui_demo.cpp', 'third-party/imgui/imgui/imgui_widgets.cpp', 'third-party/imgui/imgui/imgui_tables.cpp')
 cm_imgui = shared_library(
   'cm_imgui',
   [cm_imgui_src],
